@@ -3,15 +3,12 @@ package deletecolumnstomakesorted
 func minDeletionSize(strs []string) int {
 	nOfCols := len(strs[0])
 	del := 0
-	for i := 0; i < nOfCols; i++ {
-		prev := strs[0][i]
-		for j := 1; j < len(strs); j++ {
-			curr := strs[j][i]
-			if prev > curr {
+	for col := 0; col < nOfCols; col++ {
+		for row := 0; row < len(strs)-1; row++ {
+			if strs[row][col] > strs[row+1][col] {
 				del++
 				break
 			}
-			prev = curr
 		}
 	}
 	return del
